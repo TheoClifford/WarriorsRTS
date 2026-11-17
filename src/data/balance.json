@@ -1,0 +1,816 @@
+{
+ "version": 1,
+ "start": {
+  "prey": 200,
+  "moss": 100,
+  "herbs": 0,
+  "apprentices": 6
+ },
+ "popCap": 60,
+ "carry": 10,
+ "carryMossBundles": 15,
+ "gatherRates": {
+  "prey": 0.6,
+  "moss": 0.45,
+  "herbs": 0.38,
+  "fish": 0.66,
+  "carrion": 0.65
+ },
+ "preyGround": {
+  "stock": 450,
+  "cap": 600,
+  "regrowPerSec": 1.5,
+  "fallowSec": 60
+ },
+ "herbRegrowPerSec": 0.05,
+ "mossBed": 900,
+ "sunningrocksPreyPerSec": 0.5,
+ "seasons": {
+  "lengthSec": 240,
+  "names": [
+   "Newleaf",
+   "Greenleaf",
+   "Leaf-fall",
+   "Leaf-bare"
+  ],
+  "regrowPct": [
+   100,
+   125,
+   100,
+   25
+  ],
+  "warnSec": 30,
+  "warnSecMedicine": 60
+ },
+ "ages": [
+  {
+   "name": "First Moon",
+   "cost": {},
+   "sec": 0,
+   "requires": []
+  },
+  {
+   "name": "Border Moons",
+   "cost": {
+    "prey": 350
+   },
+   "sec": 60,
+   "requires": [
+    "hollow"
+   ]
+  },
+  {
+   "name": "Battle Moons",
+   "cost": {
+    "prey": 600,
+    "herbs": 200
+   },
+   "sec": 90,
+   "requires": [
+    "medden",
+    "elders"
+   ]
+  }
+ ],
+ "units": {
+  "apprentice": {
+   "name": "Apprentice",
+   "cost": {
+    "prey": 50
+   },
+   "sec": 20,
+   "hp": 25,
+   "dmg": 2,
+   "armor": 0,
+   "speed": 1.0,
+   "interval": 1.5,
+   "sight": 4,
+   "role": "worker",
+   "building": "nursery",
+   "strong": "Gathering, building",
+   "weak": "Everything that fights",
+   "desc": "Hunts, gathers moss and herbs, builds and repairs dens."
+  },
+  "warrior": {
+   "name": "Warrior",
+   "cost": {
+    "prey": 60
+   },
+   "sec": 22,
+   "hp": 55,
+   "dmg": 7,
+   "armor": 0,
+   "speed": 1.1,
+   "interval": 1.5,
+   "sight": 5,
+   "role": "fighter",
+   "building": "hollow",
+   "structMult": 100,
+   "strong": "Dens and the Camp, Guards (slightly)",
+   "weak": "Ambushing Stalkers",
+   "desc": "The Clan's ordinary fighter. Always a safe choice, never the best one."
+  },
+  "guard": {
+   "name": "Guard",
+   "cost": {
+    "prey": 50
+   },
+   "sec": 20,
+   "hp": 70,
+   "dmg": 4,
+   "armor": 1,
+   "speed": 0.95,
+   "interval": 1.5,
+   "sight": 4,
+   "role": "fighter",
+   "building": "hollow",
+   "age": 2,
+   "structMult": 100,
+   "bonus": {
+    "runner": 8
+   },
+   "strong": "Runners",
+   "weak": "Stalkers",
+   "desc": "A stocky cat who braces and holds the camp entrance."
+  },
+  "runner": {
+   "name": "Runner",
+   "cost": {
+    "prey": 50,
+    "herbs": 8
+   },
+   "sec": 24,
+   "hp": 55,
+   "dmg": 6,
+   "armor": 0,
+   "speed": 1.6,
+   "interval": 1.4,
+   "sight": 6,
+   "role": "fighter",
+   "building": "hollow",
+   "age": 2,
+   "structMult": 50,
+   "bonus": {
+    "stalker": 4,
+    "apprentice": 2
+   },
+   "strong": "Stalkers, apprentices",
+   "weak": "Guards",
+   "desc": "A fast, lean cat for chases and raids."
+  },
+  "stalker": {
+   "name": "Stalker",
+   "cost": {
+    "prey": 35,
+    "herbs": 12
+   },
+   "sec": 24,
+   "hp": 45,
+   "dmg": 6,
+   "armor": 0,
+   "speed": 1.15,
+   "interval": 1.5,
+   "sight": 5,
+   "role": "fighter",
+   "building": "hollow",
+   "age": 2,
+   "structMult": 50,
+   "bonus": {
+    "guard": 7
+   },
+   "pounce": {
+    "dmg": 18,
+    "concealedDmg": 36,
+    "range": 3,
+    "cooldownSec": 8
+   },
+   "strong": "Guards, anything it ambushes",
+   "weak": "Runners",
+   "desc": "A hunter who creeps close and pounces. Doubles its pounce from cover."
+  },
+  "medicine": {
+   "name": "Medicine cat",
+   "cost": {
+    "prey": 100,
+    "herbs": 50
+   },
+   "sec": 40,
+   "hp": 40,
+   "dmg": 0,
+   "armor": 0,
+   "speed": 1.05,
+   "interval": 1.5,
+   "sight": 5,
+   "role": "medicine",
+   "building": "medden",
+   "age": 2,
+   "heal": 3,
+   "healRange": 2,
+   "strong": "Keeping cats alive",
+   "weak": "Cannot fight",
+   "desc": "Heals cats nearby. Enemies do not attack medicine cats unless ordered \u2014 and StarClan frowns on it."
+  },
+  "leader": {
+   "name": "Leader",
+   "cost": {},
+   "sec": 0,
+   "hp": 160,
+   "dmg": 10,
+   "armor": 1,
+   "speed": 1.2,
+   "interval": 1.4,
+   "sight": 6,
+   "role": "fighter",
+   "structMult": 100,
+   "strong": "Any two ordinary cats",
+   "weak": "A whole patrol",
+   "desc": "Nine lives. Cats within 5 tiles deal 10% more damage. Must be on home ground to call a Clan meeting."
+  },
+  "ambusher": {
+   "name": "Ambusher",
+   "cost": {
+    "prey": 40,
+    "herbs": 12
+   },
+   "sec": 24,
+   "hp": 50,
+   "dmg": 6,
+   "armor": 0,
+   "speed": 1.15,
+   "interval": 1.5,
+   "sight": 5,
+   "role": "fighter",
+   "building": "hollow",
+   "age": 3,
+   "clan": "thunder",
+   "structMult": 50,
+   "bonus": {
+    "guard": 7
+   },
+   "base": "stalker",
+   "pounce": {
+    "dmg": 18,
+    "concealedDmg": 36,
+    "range": 4,
+    "cooldownSec": 8
+   },
+   "strong": "Guards, anything it ambushes",
+   "weak": "Runners",
+   "desc": "ThunderClan's sturdier Stalker, with a longer pounce."
+  },
+  "riverwarrior": {
+   "name": "River Warrior",
+   "cost": {
+    "prey": 70
+   },
+   "sec": 22,
+   "hp": 75,
+   "dmg": 7,
+   "armor": 0,
+   "speed": 1.1,
+   "interval": 1.5,
+   "sight": 5,
+   "role": "fighter",
+   "building": "hollow",
+   "age": 3,
+   "clan": "river",
+   "structMult": 100,
+   "shallowsBonus": 3,
+   "base": "warrior",
+   "strong": "Fights in the shallows",
+   "weak": "Ambushing Stalkers",
+   "desc": "A heavier Warrior. Full speed in water, +3 damage while in the shallows."
+  },
+  "moorrunner": {
+   "name": "Moor Runner",
+   "cost": {
+    "prey": 50,
+    "herbs": 8
+   },
+   "sec": 24,
+   "hp": 55,
+   "dmg": 6,
+   "armor": 0,
+   "speed": 1.85,
+   "interval": 1.4,
+   "sight": 6,
+   "role": "fighter",
+   "building": "hollow",
+   "age": 3,
+   "clan": "wind",
+   "structMult": 50,
+   "bonus": {
+    "stalker": 4,
+    "apprentice": 2
+   },
+   "base": "runner",
+   "strong": "Stalkers, apprentices",
+   "weak": "Guards",
+   "desc": "WindClan's fastest cat."
+  },
+  "shadowwarrior": {
+   "name": "Shadow Warrior",
+   "cost": {
+    "prey": 60,
+    "herbs": 5
+   },
+   "sec": 22,
+   "hp": 65,
+   "dmg": 8,
+   "armor": 0,
+   "speed": 1.1,
+   "interval": 1.5,
+   "sight": 5,
+   "role": "fighter",
+   "building": "hollow",
+   "age": 3,
+   "clan": "shadow",
+   "structMult": 100,
+   "base": "warrior",
+   "strong": "Ambush on any ground",
+   "weak": "Being found",
+   "desc": "A Warrior that vanishes whenever it stands still, on any terrain."
+  },
+  "fox": {
+   "name": "Fox",
+   "hp": 150,
+   "dmg": 10,
+   "armor": 0,
+   "speed": 1.2,
+   "interval": 1.5,
+   "sight": 4,
+   "role": "wild"
+  },
+  "badger": {
+   "name": "Badger",
+   "hp": 300,
+   "dmg": 14,
+   "armor": 1,
+   "speed": 0.9,
+   "interval": 1.6,
+   "sight": 4,
+   "role": "wild"
+  }
+ },
+ "buildings": {
+  "camp": {
+   "name": "Camp",
+   "size": 5,
+   "hp": 1500,
+   "sec": 0,
+   "cost": {},
+   "pop": 15,
+   "dropoff": [
+    "prey",
+    "moss",
+    "herbs"
+   ],
+   "sight": 8,
+   "shelter": 10,
+   "armor": 1,
+   "fight": {
+    "dps": 2.5,
+    "perSheltered": 0.35,
+    "range": 1.5,
+    "maxTargets": 3
+   },
+   "desc": "Fresh-kill pile, Clan meetings, shelter for 10 apprentices. Fights back. If it falls, the Clan is driven out."
+  },
+  "nursery": {
+   "name": "Nursery",
+   "size": 3,
+   "hp": 600,
+   "sec": 45,
+   "cost": {
+    "moss": 150
+   },
+   "sight": 4,
+   "limitByAge": [
+    1,
+    2,
+    3
+   ],
+   "drivenOutSec": 45,
+   "queens": {
+    "dps": 2,
+    "range": 1.0,
+    "maxTargets": 2
+   },
+   "desc": "Raises apprentices. Never destroyed: at 0 HP the queens carry the kits away for 45 s."
+  },
+  "den": {
+   "name": "Warriors' den",
+   "size": 2,
+   "hp": 300,
+   "sec": 18,
+   "cost": {
+    "moss": 30
+   },
+   "pop": 5,
+   "sight": 3,
+   "desc": "+5 population."
+  },
+  "cache": {
+   "name": "Cache",
+   "size": 2,
+   "hp": 200,
+   "sec": 20,
+   "cost": {
+    "moss": 40
+   },
+   "dropoff": [
+    "prey",
+    "moss",
+    "herbs"
+   ],
+   "sight": 3,
+   "desc": "A buried store. Drop-off for all resources."
+  },
+  "hollow": {
+   "name": "Training Hollow",
+   "size": 3,
+   "hp": 700,
+   "sec": 40,
+   "cost": {
+    "moss": 120
+   },
+   "sight": 4,
+   "desc": "Trains all fighting cats and researches combat upgrades."
+  },
+  "marker": {
+   "name": "Scent marker",
+   "size": 1,
+   "hp": 60,
+   "sec": 8,
+   "cost": {
+    "moss": 15
+   },
+   "sight": 0,
+   "radius": 7,
+   "radiusBorderPatrols": 9,
+   "max": 12,
+   "overmarkSec": 10,
+   "desc": "Claims 7 tiles: vision, trespass warnings, home-ground bonus. Removed only by over-marking."
+  },
+  "medden": {
+   "name": "Medicine den",
+   "size": 3,
+   "hp": 500,
+   "sec": 40,
+   "cost": {
+    "moss": 100,
+    "herbs": 50
+   },
+   "age": 2,
+   "dropoff": [
+    "herbs"
+   ],
+   "sight": 4,
+   "restHeal": 2,
+   "desc": "Trains the medicine cat, researches herb lore, herb drop-off, heals cats resting beside it."
+  },
+  "elders": {
+   "name": "Elders' den",
+   "size": 3,
+   "hp": 500,
+   "sec": 40,
+   "cost": {
+    "moss": 120
+   },
+   "age": 2,
+   "sight": 4,
+   "desc": "Researches economy and scouting technologies. The elders teach by telling stories."
+  },
+  "barrier": {
+   "name": "Bramble barrier",
+   "size": 1,
+   "hp": 150,
+   "sec": 5,
+   "cost": {
+    "moss": 5
+   },
+   "age": 2,
+   "sight": 1,
+   "desc": "Blocks movement."
+  },
+  "gorse": {
+   "name": "Gorse tunnel",
+   "size": 1,
+   "hp": 250,
+   "sec": 15,
+   "cost": {
+    "moss": 25
+   },
+   "age": 2,
+   "sight": 2,
+   "desc": "A passage through a barrier for your own cats."
+  },
+  "tunnel": {
+   "name": "Tunnel entrance",
+   "size": 1,
+   "hp": 200,
+   "sec": 20,
+   "cost": {
+    "moss": 60
+   },
+   "age": 3,
+   "sight": 2,
+   "clan": "wind",
+   "tech": "tunnels",
+   "travelSec": 5,
+   "maxPairs": 2,
+   "maxDist": 25,
+   "desc": "WindClan cats travel between paired entrances in 5 s."
+  }
+ },
+ "techs": {
+  "battle1": {
+   "name": "Battle Training I",
+   "building": "hollow",
+   "age": 2,
+   "cost": {
+    "prey": 100,
+    "herbs": 40
+   },
+   "sec": 40,
+   "desc": "+1 damage for all fighting cats."
+  },
+  "battle2": {
+   "name": "Battle Training II",
+   "building": "hollow",
+   "age": 3,
+   "cost": {
+    "prey": 200,
+    "herbs": 100
+   },
+   "sec": 60,
+   "requires": "battle1",
+   "desc": "+1 more damage for all fighting cats."
+  },
+  "pelt1": {
+   "name": "Thick Pelt I",
+   "building": "hollow",
+   "age": 2,
+   "cost": {
+    "prey": 100,
+    "herbs": 40
+   },
+   "sec": 40,
+   "desc": "+1 armour for all fighting cats."
+  },
+  "pelt2": {
+   "name": "Thick Pelt II",
+   "building": "hollow",
+   "age": 3,
+   "cost": {
+    "prey": 200,
+    "herbs": 100
+   },
+   "sec": 60,
+   "requires": "pelt1",
+   "desc": "+1 more armour for all fighting cats."
+  },
+  "senior": {
+   "name": "Senior Warrior",
+   "building": "hollow",
+   "age": 3,
+   "cost": {
+    "prey": 200,
+    "herbs": 80
+   },
+   "sec": 45,
+   "desc": "Warriors: +20 HP, +2 damage."
+  },
+  "hunting": {
+   "name": "Hunting Patrols",
+   "building": "elders",
+   "age": 2,
+   "cost": {
+    "prey": 100,
+    "moss": 50
+   },
+   "sec": 30,
+   "desc": "+15% prey gather rate."
+  },
+  "bundles": {
+   "name": "Moss Bundles",
+   "building": "elders",
+   "age": 2,
+   "cost": {
+    "prey": 100,
+    "moss": 75
+   },
+   "sec": 30,
+   "desc": "Apprentices carry 15."
+  },
+  "tracking": {
+   "name": "Scent Tracking",
+   "building": "elders",
+   "age": 2,
+   "cost": {
+    "prey": 80,
+    "herbs": 30
+   },
+   "sec": 30,
+   "desc": "+2 sight for all cats."
+  },
+  "borders": {
+   "name": "Border Patrols",
+   "building": "elders",
+   "age": 3,
+   "cost": {
+    "prey": 150,
+    "herbs": 80
+   },
+   "sec": 45,
+   "desc": "Marker radius 9; home-ground bonus 12%."
+  },
+  "herblore": {
+   "name": "Herb Lore",
+   "building": "medden",
+   "age": 2,
+   "cost": {
+    "prey": 80,
+    "herbs": 50
+   },
+   "sec": 30,
+   "desc": "Healing +50%."
+  },
+  "cobweb": {
+   "name": "Cobweb and Marigold",
+   "building": "medden",
+   "age": 3,
+   "cost": {
+    "prey": 150,
+    "herbs": 80
+   },
+   "sec": 45,
+   "desc": "Cats out of combat on home ground regain 1 HP per second."
+  },
+  "travelling": {
+   "name": "Travelling Herbs",
+   "building": "medden",
+   "age": 3,
+   "cost": {
+    "prey": 150,
+    "herbs": 80
+   },
+   "sec": 45,
+   "desc": "+10% speed outside home ground."
+  },
+  "lightning": {
+   "name": "Lightning Strike",
+   "building": "hollow",
+   "age": 3,
+   "clan": "thunder",
+   "cost": {
+    "prey": 200,
+    "herbs": 150
+   },
+   "sec": 60,
+   "desc": "After landing its first hit in a fight, a cat gains 30% speed for 4 s: strike and withdraw."
+  },
+  "watercombat": {
+   "name": "Water Combat",
+   "building": "hollow",
+   "age": 3,
+   "clan": "river",
+   "cost": {
+    "prey": 200,
+    "herbs": 150
+   },
+   "sec": 60,
+   "desc": "RiverClan cats in water are concealed until they attack; enemies in the shallows are slowed 30%."
+  },
+  "tunnels": {
+   "name": "Tunnels",
+   "building": "hollow",
+   "age": 3,
+   "clan": "wind",
+   "cost": {
+    "prey": 200,
+    "herbs": 150
+   },
+   "sec": 60,
+   "desc": "Apprentices dig up to two tunnel pairs, at most 25 tiles apart. WindClan cats cross in 5 s."
+  },
+  "nightambush": {
+   "name": "Night Ambush",
+   "building": "hollow",
+   "age": 3,
+   "clan": "shadow",
+   "cost": {
+    "prey": 200,
+    "herbs": 150
+   },
+   "sec": 60,
+   "desc": "Any ShadowClan cat's first hit from concealment deals double damage."
+  }
+ },
+ "combat": {
+  "meleeRange": 0.35,
+  "auraRange": 5,
+  "auraPct": 10,
+  "deputyAuraPct": 5,
+  "deputyHpPct": 30,
+  "homePct": 6,
+  "homePctBorderPatrols": 12,
+  "leaderAgePct": 20,
+  "leaderRespawnSec": 30,
+  "successionSec": 120,
+  "deputyCeremonySec": 5,
+  "deputyCooldownSec": 30,
+  "medicinePenaltySec": 60,
+  "concealRange": 2,
+  "stillSec": 1,
+  "revealSec": 3,
+  "outOfCombatSec": 5,
+  "lightningPct": 30,
+  "lightningSec": 4,
+  "waterSlowPct": 30,
+  "monsterDamage": 60,
+  "monsterMinSec": 20,
+  "monsterMaxSec": 40,
+  "monsterWarnSec": 3,
+  "monsterSpeed": 14,
+  "adderDamage": 8,
+  "ratDamage": 6
+ },
+ "clans": {
+  "thunder": {
+   "name": "ThunderClan",
+   "color": "#E8622E",
+   "playstyle": "All-rounder, ambush in cover",
+   "terrain": "Oak woodland, dense undergrowth",
+   "recommended": "First games",
+   "unique": "ambusher",
+   "tech": "lightning",
+   "trainPct": 10,
+   "bonuses": [
+    "Forest-born: concealed even while moving through undergrowth on home ground.",
+    "Mentors: fighting cats train 10% faster."
+   ],
+   "weakness": "No answer to water or open-ground speed."
+  },
+  "river": {
+   "name": "RiverClan",
+   "color": "#3E9BE0",
+   "playstyle": "Economy and fortress",
+   "terrain": "River, reed beds, island camp",
+   "recommended": "Players who like to boom",
+   "unique": "riverwarrior",
+   "tech": "watercombat",
+   "swimPct": 70,
+   "landPct": 95,
+   "bonuses": [
+    "Swimmers: cross the river at 70% speed.",
+    "Fishers: apprentices fish the river at 0.66 prey/s, and the fish never run out."
+   ],
+   "weakness": "Leaf-bare freezes the river; 5% slower on land."
+  },
+  "wind": {
+   "name": "WindClan",
+   "color": "#E8CF3A",
+   "playstyle": "Speed and raiding",
+   "terrain": "Open moor",
+   "recommended": "Players who like to raid",
+   "unique": "moorrunner",
+   "tech": "tunnels",
+   "openPct": 110,
+   "moorHuntPct": 118,
+   "otherMoorHuntPct": 80,
+   "leanPct": 95,
+   "bonuses": [
+    "Swift: fighting cats are 10% faster on open ground.",
+    "Rabbit-chasers: hunt the moor 18% faster (others 20% slower)."
+   ],
+   "weakness": "Lean: fighting cats have 5% less HP."
+  },
+  "shadow": {
+   "name": "ShadowClan",
+   "color": "#9B5BD6",
+   "playstyle": "Stealth and early aggression",
+   "terrain": "Pine forest and marsh",
+   "recommended": "Experienced players",
+   "unique": "shadowwarrior",
+   "tech": "nightambush",
+   "bonuses": [
+    "Masked scent: no trespass alarms, hidden from marker vision.",
+    "Eat anything: hunt 15% faster, no marsh penalty, no rat bites at Carrionplace."
+   ],
+   "weakness": "Thin pickings: the least prey at home of any Clan.",
+   "preyPct": 115
+  }
+ },
+ "terrainSpeed": {
+  "open": 100,
+  "under": 90,
+  "moor": 100,
+  "marsh": 85,
+  "ford": 70,
+  "road": 100,
+  "flat": 100,
+  "ice": 95,
+  "swim": 70
+ }
+}

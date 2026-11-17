@@ -1,0 +1,36 @@
+1045 games, 1033 decided (99%), median length 22.0 min (IQR 19.9-24.2)
+
+Clan win rate (decided games; target 45-55%):
+  thunder   54.1%  (95% CI 50-58%, n=503)
+  river     40.6%  (95% CI 36-45%, n=522)  <-- outside target
+  wind      55.7%  (95% CI 51-60%, n=524)  <-- outside target
+  shadow    49.7%  (95% CI 45-54%, n=517)
+
+Build order win rate (decided; target: none above 60%):
+  balanced   48.3%  (vs other orders, CI 44-53%, n=462)
+  rush       52.3%  (vs other orders, CI 48-57%, n=461)
+  boom       49.5%  (vs other orders, CI 45-54%, n=459)
+
+Build order head to head (row's win rate vs column, decided):
+              balanced      rush      boom
+  balanced           -       51%       45%
+  rush             49%         -       56%
+  boom             55%       44%         -
+
+Clan matchups (row's win rate vs column, decided):
+              thunder    river     wind   shadow
+  thunder           -      60%      46%      57%
+  river           40%        -      42%      40%
+  wind            54%      58%        -      55%
+  shadow          43%      60%      45%        -
+
+Clan x build order win rate (decided):
+  thunder  balanced 54%, rush 61%, boom 47%
+  river    balanced 40%, rush 34%, boom 48%
+  wind     balanced 52%, rush 61%, boom 54%
+  shadow   balanced 50%, rush 49%, boom 49%
+
+Border Moons median 5.4 min (target 4.5-5.5); Battle Moons median 12.2 min (target 11-13), reached in 2003/2090
+First fight median 6.8 min (rush games 6.2)
+Prey gathered per Clan (median): thunder 7309, river 6911, wind 8324, shadow 8423
+Peak army per Clan (median): thunder 20, river 17, wind 20, shadow 20

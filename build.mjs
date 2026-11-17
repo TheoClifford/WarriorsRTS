@@ -1,0 +1,10 @@
+import { build } from 'esbuild';
+import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+const prod = process.argv.includes('--prod');
+const r = await build({ entryPoints: ['src/main.ts'], bundle: true, format: 'iife', target: 'es2019', write: false, minify: prod, sourcemap: false, legalComments: 'none' });
+const js = r.outputFiles[0].text;
+const css = readFileSync('src/ui/style.css', 'utf8');
+const html = readFileSync('index.template.html', 'utf8').replace('/*CSS*/', () => css).replace('/*JS*/', () => js.replace(/<\/script/gi, '<\\/script'));
+mkdirSync('dist', { recursive: true });
+writeFileSync('dist/index.html', html);
+console.log('dist/index.html', (html.length / 1024).toFixed(0) + ' KB');

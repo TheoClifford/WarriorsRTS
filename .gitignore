@@ -1,0 +1,8 @@
+node_modules/
+# test output: keep the balance reports and raw results, ignore screenshots, logs and scratch runs
+test/out/*
+!test/out/*.report.txt
+!test/out/pass1.jsonl
+!test/out/pass2.jsonl
+!test/out/pass3_partial.jsonl
+!test/out/final.jsonl
